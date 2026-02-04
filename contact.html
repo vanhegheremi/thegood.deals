@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contactez l'équipe The Good Deals. Nous sommes là pour répondre à vos questions.">
+    <title>Contact - The Good Deals</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="the">The </span><span class="good">Good</span><span class="dot">.</span><span class="deals">Deals</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#comment">Comment ça marche</a>
+                <a href="about.html">À propos</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://thegood.deals" class="btn-primary">Ouvrir l'app</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Contactez-nous</h1>
+        <p>Une question ? Un projet ? Nous sommes là pour vous aider</p>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="contact-form">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom complet *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Sujet *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Sélectionnez un sujet...</option>
+                            <option value="artisan">Je suis artisan et je veux créer un deal</option>
+                            <option value="ambassadeur">Je veux devenir ambassadeur</option>
+                            <option value="question">Question générale</option>
+                            <option value="support">Support technique</option>
+                            <option value="partenariat">Partenariat</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Votre message *</label>
+                        <textarea id="message" name="message" required placeholder="Décrivez votre demande..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" style="width: 100%; padding: 1.2rem;">Envoyer le message</button>
+                </form>
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem; padding-top: 4rem; border-top: 1px solid rgba(26, 79, 74, 0.1);">
+                <h2 style="margin-bottom: 2rem;">Autres moyens de nous contacter</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 900px; margin: 0 auto;">
+                    <div style="background: var(--bg-cream); padding: 2rem; border-radius: 1rem;">
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">📧</div>
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Email</h3>
+                        <a href="mailto:contact@thegood.deals" style="color: var(--accent); text-decoration: none; font-weight: 600;">contact@thegood.deals</a>
+                    </div>
+
+                    <div style="background: var(--bg-cream); padding: 2rem; border-radius: 1rem;">
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">📱</div>
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Application</h3>
+                        <a href="https://thegood.deals" style="color: var(--accent); text-decoration: none; font-weight: 600;">Ouvrir l'app</a>
+                    </div>
+
+                    <div style="background: var(--bg-cream); padding: 2rem; border-radius: 1rem;">
+                        <div style="font-size: 2rem; margin-bottom: 1rem;">💬</div>
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Réseaux sociaux</h3>
+                        <a href="https://instagram.com/thegood.deals_original" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 600;">@thegood.deals_original</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--bg-cream); padding: 3rem; border-radius: 2rem; margin-top: 4rem;">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Questions fréquentes</h2>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <details style="margin-bottom: 1rem; background: white; padding: 1.5rem; border-radius: 1rem;">
+                        <summary style="font-weight: 600; color: var(--primary); cursor: pointer;">Quel est le délai de réponse ?</summary>
+                        <p style="margin-top: 1rem; color: var(--text-gray);">Nous nous engageons à répondre à tous les messages dans les 48 heures ouvrées. Pour les demandes urgentes, n'hésitez pas à le mentionner dans votre message.</p>
+                    </details>
+
+                    <details style="margin-bottom: 1rem; background: white; padding: 1.5rem; border-radius: 1rem;">
+                        <summary style="font-weight: 600; color: var(--primary); cursor: pointer;">Je suis artisan, comment commencer ?</summary>
+                        <p style="margin-top: 1rem; color: var(--text-gray);">Remplissez le formulaire ci-dessus en sélectionnant "Je suis artisan" comme sujet. Nous vous contacterons pour une démo personnalisée et vous aider à créer votre premier deal.</p>
+                    </details>
+
+                    <details style="margin-bottom: 1rem; background: white; padding: 1.5rem; border-radius: 1rem;">
+                        <summary style="font-weight: 600; color: var(--primary); cursor: pointer;">Vous cherchez des partenaires ?</summary>
+                        <p style="margin-top: 1rem; color: var(--text-gray);">Oui ! Nous sommes toujours ouverts aux partenariats avec des acteurs qui partagent notre vision de l'artisanat français. Contactez-nous via le formulaire en sélectionnant "Partenariat".</p>
+                    </details>
+
+                    <details style="margin-bottom: 1rem; background: white; padding: 1.5rem; border-radius: 1rem;">
+                        <summary style="font-weight: 600; color: var(--primary); cursor: pointer;">Support technique</summary>
+                        <p style="margin-top: 1rem; color: var(--text-gray);">Pour toute question technique sur l'utilisation de l'application, sélectionnez "Support technique" dans le formulaire. Pensez à décrire précisément votre problème (appareil, navigateur, étapes pour reproduire).</p>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="the">The </span><span class="good">Good</span><span class="dot">.</span><span class="deals">Deals</span>
+                </div>
+                <p class="footer-desc">La plateforme qui permet aux artisans français de fidéliser leur clientèle et de vendre en volume, sans abonnement.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Produit</h4>
+                <div class="footer-links">
+                    <a href="index.html#comment">Comment ça marche</a>
+                    <a href="index.html#artisans">Pour les artisans</a>
+                    <a href="index.html#ambassadeurs">Pour les ambassadeurs</a>
+                    <a href="index.html#faq">FAQ</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Entreprise</h4>
+                <div class="footer-links">
+                    <a href="about.html">À propos</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Application</h4>
+                <div class="footer-links">
+                    <a href="https://thegood.deals">Ouvrir l'app</a>
+                    <a href="https://thegood.deals/login">Se connecter</a>
+                    <a href="https://thegood.deals/signup">Créer un compte</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 The Good Deals. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Good Deals - L'artisanat français à prix d'amis</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1A4F4A;
+            --accent: #FC661A;
+            --bg-light: #FDFBF7;
+            --bg-cream: #F5F1E8;
+            --text-dark: #1A1A1A;
+            --text-gray: #666666;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(26, 79, 74, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: baseline;
+            gap: 0;
+        }
+
+        .logo .the {
+            color: var(--primary);
+            margin-right: 0.3rem;
+        }
+
+        .logo .good {
+            color: var(--primary);
+        }
+
+        .logo .dot {
+            color: var(--accent);
+        }
+
+        .logo .deals {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary:hover {
+            background: #E55A15;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(252, 102, 26, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-cream) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(252, 102, 26, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-50px, 50px) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 4.5rem;
+            line-height: 1.1;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-text h1 .accent {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            animation: slideInLeft 1s ease-out 0.2s backwards;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1.5rem;
+            animation: slideInLeft 1s ease-out 0.4s backwards;
+        }
+
+        .social-proof {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(26, 79, 74, 0.1);
+            animation: slideInLeft 1s ease-out 0.6s backwards;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-top: 0.5rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: slideInRight 1s ease-out 0.4s backwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .phone-frame {
+            background: var(--primary);
+            border-radius: 3rem;
+            padding: 1rem;
+            box-shadow: 0 30px 60px rgba(26, 79, 74, 0.3);
+            position: relative;
+        }
+
+        .phone-screen {
+            background: white;
+            border-radius: 2.5rem;
+            overflow: hidden;
+            aspect-ratio: 9/19.5;
+        }
+
+        .deal-card-preview {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .deal-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary) 0%, #2D6E68 100%);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .deal-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .deal-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .deal-prices {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .deal-price-old {
+            font-size: 1rem;
+            color: var(--text-gray);
+            text-decoration: line-through;
+        }
+
+        .deal-price-new {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .deal-badge {
+            display: inline-block;
+            background: rgba(252, 102, 26, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 8rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 4rem;
+        }
+
+        .steps {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent) 0%, #E55A15 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 30px rgba(252, 102, 26, 0.3);
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .step p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 8rem 2rem;
+            background: var(--bg-cream);
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .author-role {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo .the {
+            color: white;
+        }
+
+        .footer-logo .good {
+            color: white;
+        }
+
+        .footer-logo .dot {
+            color: var(--accent);
+        }
+
+        .footer-logo .deals {
+            color: var(--accent);
+        }
+
+        .footer-desc {
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.5;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        /* For Artisans Section */
+        .for-artisans {
+            padding: 8rem 2rem;
+            background: white;
+        }
+
+        .artisan-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .artisan-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .benefit {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent) 0%, #E55A15 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .benefit-text p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .app-download-container {
+            background: var(--bg-cream);
+            padding: 3rem;
+            border-radius: 2rem;
+            text-align: center;
+        }
+
+        .app-download-container h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .download-desc {
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .pwa-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .account-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn-login {
+            background: white;
+            color: var(--primary);
+            padding: 0.9rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-login:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-signup {
+            background: transparent;
+            color: var(--text-dark);
+            padding: 0.9rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid rgba(26, 79, 74, 0.2);
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-signup:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .pwa-install-info {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(26, 79, 74, 0.1);
+            text-align: left;
+        }
+
+        .pwa-install-info p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .install-details {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-top: 1rem;
+        }
+
+        .install-details summary {
+            font-weight: 600;
+            color: var(--primary);
+            cursor: pointer;
+            user-select: none;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .install-details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .install-details summary::before {
+            content: '▶';
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .install-details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .install-instructions {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(26, 79, 74, 0.1);
+        }
+
+        .install-instructions p {
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .install-instructions strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* For Ambassadors */
+        .for-ambassadors {
+            padding: 8rem 2rem;
+            background: var(--bg-cream);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 8rem 2rem;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border: 2px solid rgba(26, 79, 74, 0.1);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--accent);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary);
+            user-select: none;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 2rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 2rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-ctas {
+                justify-content: center;
+            }
+
+            .social-proof {
+                justify-content: center;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .artisan-content {
+                grid-template-columns: 1fr !important;
+                gap: 3rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text p {
+                font-size: 1.1rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="the">The </span><span class="good">Good</span><span class="dot">.</span><span class="deals">Deals</span>
+            </a>
+            <div class="nav-links">
+                <a href="#comment">Comment ça marche</a>
+                <a href="#artisans">Artisans</a>
+                <a href="#ambassadeurs">Ambassadeurs</a>
+                <a href="#" class="btn-primary">Créer un deal</a>
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>L'artisanat français à <span class="accent">prix d'amis</span></h1>
+                <p>Créez des deals exclusifs, partagez à votre réseau, vendez en volume. Sans abonnement, sans risque.</p>
+                <div class="hero-ctas">
+                    <a href="#" class="btn-primary">Je suis artisan</a>
+                    <a href="#" class="btn-secondary">Je suis acheteur</a>
+                </div>
+                <div class="social-proof">
+                    <div class="stat">
+                        <div class="stat-number">200</div>
+                        <div class="stat-label">Membres</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Deals réussis</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">12k€</div>
+                        <div class="stat-label">Économisés</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <div class="deal-card-preview">
+                                <div class="deal-image">🍷</div>
+                                <div class="deal-info">
+                                    <div class="deal-title">Coffret Apéro Convivialité</div>
+                                    <div class="deal-prices">
+                                        <span class="deal-price-old">60€</span>
+                                        <span class="deal-price-new">45€</span>
+                                    </div>
+                                    <div class="deal-badge">✓ 100% ATTEINT</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="comment">
+        <h2 class="section-title">Comment ça marche ?</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Créez un deal</h3>
+                <p>Choisissez un produit phare et proposez-le à -25% minimum. Vous fixez l'objectif de ventes.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Partagez le lien</h3>
+                <p>Recevez un lien unique et partagez-le à votre clientèle par email, SMS ou réseaux sociaux.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Vendez en volume</h3>
+                <p>Vos clients achètent ET partagent. Vous multipliez vos ventes et gagnez de nouveaux clients.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Artisans -->
+    <section class="for-artisans" id="artisans">
+        <div class="artisan-content">
+            <div class="artisan-benefits">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Pour les artisans</h2>
+                <div class="benefit">
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-text">
+                        <h3>Sans risque financier</h3>
+                        <p>Vous payez uniquement 7% de commission sur les ventes réalisées. Pas d'abonnement, pas de frais fixes.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">📈</div>
+                    <div class="benefit-text">
+                        <h3>Vendez en volume</h3>
+                        <p>Multipliez vos ventes par 5 grâce à l'effet viral. Vos clients deviennent vos ambassadeurs.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">👥</div>
+                    <div class="benefit-text">
+                        <h3>Gagnez de nouveaux clients</h3>
+                        <p>Chaque deal vous apporte en moyenne 30% de nouveaux clients qui découvrent votre savoir-faire.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-text">
+                        <h3>Simple et rapide</h3>
+                        <p>Créez votre premier deal en 5 minutes. Pas de formation, pas de complications.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="app-download-container">
+                <h3>Accédez à l'application</h3>
+                <p class="download-desc">Créez votre premier deal en 5 minutes</p>
+                <div class="pwa-buttons">
+                    <a href="https://thegood.deals" class="btn-primary" style="display: inline-block; text-align: center; width: 100%; font-size: 1.1rem; padding: 1.2rem;">
+                        Ouvrir l'application
+                    </a>
+                    <div class="account-buttons">
+                        <a href="https://thegood.deals/login" class="btn-login">Se connecter</a>
+                        <a href="https://thegood.deals/signup" class="btn-signup">Créer un compte</a>
+                    </div>
+                </div>
+                <div class="pwa-install-info">
+                    <p>💡 <strong>Astuce :</strong> Ajoutez l'app à votre écran d'accueil pour un accès rapide</p>
+                    <details class="install-details">
+                        <summary>Comment installer l'app ?</summary>
+                        <div class="install-instructions">
+                            <p><strong>Sur iPhone/iPad :</strong><br>
+                            Safari → Partager (icône) → "Sur l'écran d'accueil"</p>
+                            <p><strong>Sur Android :</strong><br>
+                            Chrome → Menu (⋮) → "Installer l'application"</p>
+                            <p><strong>Sur ordinateur :</strong><br>
+                            Chrome/Edge → Icône ⊕ dans la barre d'adresse → "Installer"</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Ambassadors -->
+    <section class="for-ambassadors" id="ambassadeurs">
+        <div class="artisan-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="app-download-container">
+                <h3>Accédez à l'application</h3>
+                <p class="download-desc">Rejoignez la communauté et créez votre premier deal</p>
+                <div class="pwa-buttons">
+                    <a href="https://thegood.deals" class="btn-primary" style="display: inline-block; text-align: center; width: 100%; font-size: 1.1rem; padding: 1.2rem;">
+                        Ouvrir l'application
+                    </a>
+                    <div class="account-buttons">
+                        <a href="https://thegood.deals/login" class="btn-login">Se connecter</a>
+                        <a href="https://thegood.deals/signup" class="btn-signup">Créer un compte</a>
+                    </div>
+                </div>
+                <div class="pwa-install-info">
+                    <p>💡 <strong>Astuce :</strong> Ajoutez l'app à votre écran d'accueil pour un accès rapide</p>
+                    <details class="install-details">
+                        <summary>Comment installer l'app ?</summary>
+                        <div class="install-instructions">
+                            <p><strong>Sur iPhone/iPad :</strong><br>
+                            Safari → Partager (icône) → "Sur l'écran d'accueil"</p>
+                            <p><strong>Sur Android :</strong><br>
+                            Chrome → Menu (⋮) → "Installer l'application"</p>
+                            <p><strong>Sur ordinateur :</strong><br>
+                            Chrome/Edge → Icône ⊕ dans la barre d'adresse → "Installer"</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+            <div class="artisan-benefits">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Pour les ambassadeurs</h2>
+                <div class="benefit">
+                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-text">
+                        <h3>Soyez le héros</h3>
+                        <p>Partagez des bons plans exceptionnels à vos proches et devenez la référence de votre groupe.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🤝</div>
+                    <div class="benefit-text">
+                        <h3>Soutenez l'artisanat local</h3>
+                        <p>Aidez les artisans que vous aimez à se faire connaître et à prospérer.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">✨</div>
+                    <div class="benefit-text">
+                        <h3>Accès exclusif</h3>
+                        <p>Découvrez en avant-première les nouveaux deals et produits d'exception.</p>
+                    </div>
+                </div>
+                <div class="benefit">
+                    <div class="benefit-icon">🎁</div>
+                    <div class="benefit-text">
+                        <h3>Récompenses à venir</h3>
+                        <p>Système de points et produits offerts en cours de développement pour les ambassadeurs actifs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <h2 class="section-title">Questions fréquentes</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment fonctionne la commission de 7% ?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>La commission de 7% (environ 6% de frais de service + 1.8% de frais CB) est prélevée uniquement sur les ventes réalisées. Si votre deal n'aboutit pas, vous ne payez rien. La commission est automatiquement déduite et vous recevez 93% du chiffre d'affaires 5 jours après la clôture du deal.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Que se passe-t-il si mon deal n'atteint pas 100% ?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Vous avez le choix : soit vous validez le deal avec le nombre de ventes atteint (par exemple 30 sur 50), soit vous attendez encore quelques jours, soit vous annulez. Dans tous les cas, les clients ne sont débités que si vous validez le deal. Vous gardez le contrôle total.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Comment mes clients reçoivent-ils leurs produits ?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Le mode privilégié est le retrait en boutique, ce qui crée du trafic chez vous et évite les frais d'expédition. Les clients peuvent aussi retirer chez l'ambassadeur si c'est lui qui a créé le deal. Pour certains produits, vous pouvez proposer la livraison avec des frais payés en supplément par le client.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Pourquoi mes clients partageraient le lien ?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>C'est naturel ! Quand on découvre un bon plan sur un produit qu'on aime, on pense immédiatement à nos proches. "Regarde, le caviste fait un deal à -30% sur ce vin de fou !" C'est du bouche-à-oreille digitalisé. Et statistiquement, 60% des acheteurs partagent le lien à au moins 3 personnes.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>C'est vraiment sans engagement ?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Oui, totalement. Aucun abonnement, aucun engagement de durée, aucun minimum de deals à créer. Vous testez un premier deal, vous voyez ce que ça donne, et vous décidez si vous voulez continuer. Si ça ne marche pas, vous n'avez rien perdu.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Puis-je faire plusieurs deals en même temps ?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolument ! Vous pouvez créer autant de deals que vous le souhaitez. Certains artisans font un "Deal du mois" récurrent, d'autres créent des deals saisonniers (coffrets Noël, BBQ été, etc.). C'est vous qui gérez votre calendrier.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">Ils ont testé</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="quote">"J'ai vendu 50 bouteilles en 3 jours grâce à The Good Deals. Mes clients ont adoré partager le bon plan à leurs proches. Résultat : 30 nouveaux clients !"</div>
+                <div class="author">
+                    <div class="author-avatar">J</div>
+                    <div class="author-info">
+                        <div class="author-name">Jean M.</div>
+                        <div class="author-role">Vigneron, Provence</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote">"Créer un deal pour mon fromager préféré, c'était génial ! Mes amis m'ont remercié et j'ai eu le plaisir de faire découvrir un artisan de qualité."</div>
+                <div class="author">
+                    <div class="author-avatar">M</div>
+                    <div class="author-info">
+                        <div class="author-name">Marie L.</div>
+                        <div class="author-role">Ambassadrice</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="quote">"Enfin une vraie bonne affaire sur des produits artisanaux ! J'ai découvert un caviste incroyable et économisé 25€. Je recommande à tous mes proches."</div>
+                <div class="author">
+                    <div class="author-avatar">P</div>
+                    <div class="author-info">
+                        <div class="author-name">Pierre D.</div>
+                        <div class="author-role">Client fidèle</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Prêt à commencer ?</h2>
+            <p>Rejoignez les artisans qui font déjà confiance à The Good Deals pour fidéliser leur clientèle et vendre en volume.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-white">Créer mon premier deal</a>
+                <a href="#" class="btn-outline">En savoir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="the">The </span><span class="good">Good</span><span class="dot">.</span><span class="deals">Deals</span>
+                </div>
+                <p class="footer-desc">La plateforme qui permet aux artisans français de fidéliser leur clientèle et de vendre en volume, sans abonnement.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Produit</h4>
+                <div class="footer-links">
+                    <a href="#comment">Comment ça marche</a>
+                    <a href="#artisans">Pour les artisans</a>
+                    <a href="#ambassadeurs">Pour les ambassadeurs</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Entreprise</h4>
+                <div class="footer-links">
+                    <a href="#">À propos</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Recrutement</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Légal</h4>
+                <div class="footer-links">
+                    <a href="#">CGU</a>
+                    <a href="#">Politique de confidentialité</a>
+                    <a href="#">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 The Good Deals. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    if (href !== '#' && href.length > 1) {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            // Close mobile menu if open
+                            if (window.innerWidth <= 768) {
+                                navLinks.classList.remove('active');
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // FAQ accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(i => i.classList.remove('active'));
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.step, .testimonial-card, .faq-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

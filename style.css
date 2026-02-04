@@ -1,0 +1,569 @@
+/* ========================================
+   THE GOOD DEALS - STYLES PRINCIPAUX
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #1A4F4A;
+    --accent: #FC661A;
+    --bg-light: #FDFBF7;
+    --bg-cream: #F5F1E8;
+    --text-dark: #1A1A1A;
+    --text-gray: #666666;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(253, 251, 247, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(26, 79, 74, 0.1);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--primary);
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+}
+
+.logo .the {
+    color: var(--primary);
+    margin-right: 0.3rem;
+}
+
+.logo .good {
+    color: var(--primary);
+}
+
+.logo .dot {
+    color: var(--accent);
+}
+
+.logo .deals {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* ========================================
+   BOUTONS
+   ======================================== */
+
+.btn-primary {
+    background: var(--accent);
+    color: white;
+    padding: 0.75rem 1.75rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background: #E55A15;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(252, 102, 26, 0.3);
+}
+
+.btn-secondary {
+    background: var(--primary);
+    color: white;
+    padding: 0.75rem 1.75rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary);
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background: transparent;
+    color: var(--primary);
+}
+
+.btn-white {
+    background: white;
+    color: var(--primary);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-white:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--primary);
+}
+
+.btn-login {
+    background: white;
+    color: var(--primary);
+    padding: 0.9rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid var(--primary);
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-login:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-signup {
+    background: transparent;
+    color: var(--text-dark);
+    padding: 0.9rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid rgba(26, 79, 74, 0.2);
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-signup:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* ========================================
+   SECTIONS COMMUNES
+   ======================================== */
+
+.section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.5rem;
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 4rem;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ========================================
+   PAGE HEADER (pour pages internes)
+   ======================================== */
+
+.page-header {
+    padding: 10rem 2rem 6rem;
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-cream) 100%);
+    text-align: center;
+}
+
+.page-header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 4rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.page-header p {
+    font-size: 1.3rem;
+    color: var(--text-gray);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   CONTENT SECTION
+   ======================================== */
+
+.content-section {
+    padding: 6rem 2rem;
+    background: white;
+}
+
+.content-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin: 3rem 0 1.5rem;
+}
+
+.content-section h3 {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin: 2rem 0 1rem;
+}
+
+.content-section p {
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.content-section ul,
+.content-section ol {
+    color: var(--text-gray);
+    line-height: 1.8;
+    margin: 1rem 0 1.5rem 2rem;
+}
+
+.content-section a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.content-section a:hover {
+    color: var(--primary);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+footer {
+    background: var(--text-dark);
+    color: white;
+    padding: 4rem 2rem 2rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.footer-logo .the {
+    color: white;
+}
+
+.footer-logo .good {
+    color: white;
+}
+
+.footer-logo .dot {
+    color: var(--accent);
+}
+
+.footer-logo .deals {
+    color: var(--accent);
+}
+
+.footer-desc {
+    opacity: 0.7;
+    line-height: 1.6;
+}
+
+.footer-section h4 {
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    opacity: 0.5;
+}
+
+/* ========================================
+   MOBILE MENU
+   ======================================== */
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+/* ========================================
+   FORMULAIRE DE CONTACT
+   ======================================== */
+
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--bg-cream);
+    padding: 3rem;
+    border-radius: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid rgba(26, 79, 74, 0.1);
+    border-radius: 10px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* ========================================
+   PWA DOWNLOAD SECTION
+   ======================================== */
+
+.pwa-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.account-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.pwa-install-info {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(26, 79, 74, 0.1);
+    text-align: left;
+}
+
+.pwa-install-info p {
+    color: var(--text-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.install-details {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+.install-details summary {
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.install-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.install-details summary::before {
+    content: '▶';
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.install-details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.install-instructions {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(26, 79, 74, 0.1);
+}
+
+.install-instructions p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.install-instructions strong {
+    color: var(--primary);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .page-header p {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .account-buttons {
+        grid-template-columns: 1fr;
+    }
+}
