@@ -30,6 +30,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 
+    <!-- Analytics (Plausible - RGPD-friendly, no cookies) -->
+    <script defer data-domain="thegood.deals" src="https://plausible.io/js/script.js"></script>
+
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -76,7 +79,7 @@
             --bg-light: #FDFBF7;
             --bg-cream: #F5F1E8;
             --text-dark: #1A1A1A;
-            --text-gray: #666666;
+            --text-gray: #555555;
         }
 
         body {
@@ -1020,26 +1023,65 @@
                 flex-direction: column;
             }
         }
+
+        /* Skip to content */
+        .skip-to-content {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 0 8px 8px;
+            font-weight: 600;
+            text-decoration: none;
+            z-index: 10000;
+            transition: top 0.2s ease;
+        }
+
+        .skip-to-content:focus {
+            top: 0;
+        }
+
+        /* Focus styles */
+        *:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
+
     <!-- Navigation -->
-    <nav>
+    <nav aria-label="Navigation principale">
         <div class="nav-container">
             <a href="#" class="logo">
                 <span class="the">The </span><span class="good">Good</span><span class="dot">.</span><span class="deals">Deals</span>
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links" role="navigation">
                 <a href="#comment">Comment ça marche</a>
                 <a href="#artisans">Artisans</a>
                 <a href="#ambassadeurs">Ambassadeurs</a>
                 <a href="#" class="btn-primary">Créer un deal</a>
             </div>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links">☰</button>
         </div>
     </nav>
 
     <!-- Hero Section -->
+    <main id="main-content">
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
@@ -1345,6 +1387,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer>

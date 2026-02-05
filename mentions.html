@@ -30,25 +30,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <!-- Analytics (Plausible - RGPD-friendly, no cookies) -->
+    <script defer data-domain="thegood.deals" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
+    <a href="#main-content" class="skip-to-content">Aller au contenu principal</a>
+
     <!-- Navigation -->
-    <nav>
+    <nav aria-label="Navigation principale">
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <span class="the">The </span><span class="good">Good</span><span class="dot">.</span><span class="deals">Deals</span>
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="nav-links" role="navigation">
                 <a href="index.html#comment">Comment ça marche</a>
                 <a href="about.html">À propos</a>
                 <a href="contact.html">Contact</a>
                 <a href="https://thegood.deals" class="btn-primary">Ouvrir l'app</a>
             </div>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-links">☰</button>
         </div>
     </nav>
 
     <!-- Page Header -->
+    <main id="main-content">
     <section class="page-header">
         <h1>Mentions légales</h1>
         <p>Informations légales conformément à la loi n°2004-575 du 21 juin 2004 (LCEN)</p>
@@ -116,6 +122,7 @@
 
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer>

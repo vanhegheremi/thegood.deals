@@ -14,7 +14,30 @@
     --bg-light: #FDFBF7;
     --bg-cream: #F5F1E8;
     --text-dark: #1A1A1A;
-    --text-gray: #666666;
+    --text-gray: #555555;
+}
+
+/* ========================================
+   SKIP TO CONTENT (Accessibility)
+   ======================================== */
+
+.skip-to-content {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0 0 8px 8px;
+    font-weight: 600;
+    text-decoration: none;
+    z-index: 10000;
+    transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+    top: 0;
 }
 
 body {
@@ -565,5 +588,67 @@ footer {
 
     .account-buttons {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   FOCUS STYLES (Accessibility)
+   ======================================== */
+
+*:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   LOADING STATE (Buttons)
+   ======================================== */
+
+.btn-primary.is-loading {
+    opacity: 0.7;
+    pointer-events: none;
+    position: relative;
+}
+
+.btn-primary.is-loading::after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: 0.5em;
+    border: 2px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: btn-spin 0.6s linear infinite;
+    vertical-align: middle;
+}
+
+@keyframes btn-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   REDUCED MOTION (Accessibility)
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .btn-primary.is-loading::after {
+        animation: none;
+        display: none;
     }
 }

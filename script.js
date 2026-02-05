@@ -38,7 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.toggle('active');
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+            mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
         });
     }
 
@@ -60,28 +62,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================================
-    // SCROLL ANIMATIONS
+    // SCROLL ANIMATIONS (respects prefers-reduced-motion)
     // ========================================
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+    if (!prefersReducedMotion) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.step, .testimonial-card, .faq-item, .benefit').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
-    }, observerOptions);
-
-    document.querySelectorAll('.step, .testimonial-card, .faq-item, .benefit').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
+    }
 
     // ========================================
     // CONTACT FORM HANDLING
@@ -93,11 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Envoi en cours...';
+            submitBtn.textContent = 'Envoi en cours';
             submitBtn.disabled = true;
+            submitBtn.classList.add('is-loading');
 
             // Simulate form submission (replace with real API call)
             setTimeout(() => {
+                submitBtn.classList.remove('is-loading');
                 alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
                 contactForm.reset();
                 submitBtn.textContent = originalText;
