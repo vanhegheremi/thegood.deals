@@ -1,0 +1,21 @@
+{
+  "name": "The Good Deals",
+  "short_name": "Good Deals",
+  "description": "L'artisanat français à prix d'amis. Deals exclusifs entre artisans, ambassadeurs et acheteurs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FDFBF7",
+  "theme_color": "#1A4F4A",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
